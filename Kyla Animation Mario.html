@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+
+#mario {
+	position: absolute;
+	top: 250px;
+}
+#fire {
+	position: absolute;
+	top: 250px;
+}
+
+.dropbtn {
+    background-color: #D6392B;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #1A1E41;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.show {
+	display:block;
+}
+
+</style>
+</head>
+
+
+
+
+
+
+
+<body>
+
+<div class="dropdown">
+  <button onclick="myFunction()" class="dropbtn">HELP MARIO</button>
+  <div id="myDropdown" class="dropdown-content">
+    <a href="#">Send Flowers</a>
+    <a href="#">Send Stars</a>
+    <a href="#">Send Luigi</a>
+  </div>
+</div>
+
+<button onclick="move()">Play</button>
+
+
+<img id="mario" src="mariopixelcopy.png">
+<img id="fire" src="fireball.gif" height="275" width="475">
+
+<script>
+
+function move() {
+	var fireimage = document.getElementById("fire");
+	var pos = 0;
+	var id = setInterval(frame, 2);
+	function frame() {
+		if (pos == 540) {
+			clearInterval(id);
+		} else {
+			pos++;
+			fireimage.style.right = pos + 'px';
+		}
+	}
+}
+
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+
+var audio = new Audio("mariodeathsong.mp3" ) ;
+
+audio.openDropdown = function(){
+audio.play();
+}
+
+audio.loop = false;
+
+audio.onended = function(){
+audio.play();
+}
+</script>
+
+<input type="image" src="mariocoin copy.png" height="12px" onclick="audio.play()">
+		<audio>
+ 			<source src="mariodeathsong.mp3" type="audio/mpeg">
+		</audio>
+
+</body>
+</html>
